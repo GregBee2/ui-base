@@ -22,6 +22,7 @@ UIBaseModel.prototype.init=function(config,state,content){
 	this.setContent(content);
 	this.registerEvents();
 	this.initialized=true;
+	return this;
 }
 UIBaseModel.prototype.registerEvents=function(){
 	if(this.state){
