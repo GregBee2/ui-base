@@ -33,8 +33,8 @@ export default {
 		extend: true,
 		file: definition.main,
 		format: _format,
-		globals: dependencies.reduce((p, v) => (p[v] = "xa", p), {}),
-		name:'xa',
+		globals: dependencies.reduce((p, v) => (p[v] = "xv", p), {}),
+		name:'xv',
 		banner:bannerText
 	}	
 };
