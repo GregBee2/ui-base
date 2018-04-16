@@ -1,6 +1,6 @@
 {
   "name": "@visual-analytics/ui-base",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Base classes for each ui-component",
   "keywords": [
     "visual-analytics",
