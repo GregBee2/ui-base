@@ -20,6 +20,12 @@ UIBaseController.prototype.init=function(){
 	//this.attachChildEvents();
 	
 	//this.setViewContent();
+	if(!this.model.initialized){
+		this.model.init();
+	}
+	if(!this.view.initialized){
+		this.view.init(this.model.getConfiguration(),this.model.getContent);
+	}
 	this.addListeners();
 	this.registerEvents();
 	this.initialized=true;
