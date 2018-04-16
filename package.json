@@ -27,9 +27,11 @@
     "uglify": "uglifyjs  --comments /^@preserve/ dist/ui-base.js -c -m -o dist/ui-base.min.js"
   },
   "devDependencies": {
+    "jsdom": "^11.8.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.56.3",
-    "tape": "^4.9.0"
+    "tape": "^4.9.0",
+    "xassist": "^1.0.3"
   },
   "dependencies": {},
   "repository": {
