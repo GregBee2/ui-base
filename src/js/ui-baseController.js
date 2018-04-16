@@ -1,5 +1,5 @@
 "use strict"
-
+import { EventDispatcher } from "xassist"
 function UIBaseController(model,view){
 	EventDispatcher.call(this);
 	this.initialized=false;

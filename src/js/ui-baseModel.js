@@ -1,6 +1,6 @@
 "use strict"
 
-var { id, EventDispatcher, object }=require("xassist")
+import { id, EventDispatcher, object } from "xassist"
 
 function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
 	EventDispatcher.call(this);

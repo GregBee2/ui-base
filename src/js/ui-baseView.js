@@ -14,17 +14,17 @@ UIBaseView.prototype.init=function(config,content){
 }
 
 UIBaseView.prototype.createElement=function(config,content){
-	var elm=document.createElement("div"),className="";
+	var elm=document.createElement("div");
 	elm.id=config.id;
 	elm.className=this.getClassName(config);
 	elm.innerHTML=this.getContent(content,config);
 	return elm;
 }
 
-UIBaseView.prototype.getContent=function(content,config){
+UIBaseView.prototype.getContent=function(/*content,config*/){
 	return "";
 }
-UIBaseView.prototype.getClassName=function(config){
+UIBaseView.prototype.getClassName=function(/*config*/){
 	return this.className||"";
 }
 

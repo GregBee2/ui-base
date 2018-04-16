@@ -2,19 +2,19 @@
 * @preserve
 * https://github.com/GregBee2/ui-base.git Version 0.0.1.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Mon, 16 Apr 2018 09:28:29 GMT.
+*  Created on Mon, 16 Apr 2018 09:36:03 GMT.
 */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.xa = global.xa || {})));
-}(this, (function (exports) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'xassist'], factory) :
+	(factory((global.xa = global.xa || {}),global.xassist));
+}(this, (function (exports,xassist) { 'use strict';
 
 function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
-	EventDispatcher.call(this);
+	xassist.EventDispatcher.call(this);
 	this.config=defaultConfig||{};
 	if(this.config){
-		this.config.id=(typeof idPrefix==="string"?id(idPrefix):id());
+		this.config.id=(typeof idPrefix==="string"?xassist.id(idPrefix):xassist.id());
 	}
 
 	this.state=defaultState||false;
@@ -22,7 +22,7 @@ function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
 	this.content=defaultContent||false;
 	this.initialized=false;
 }
-UIBaseModel.prototype = Object.create(EventDispatcher.prototype); // Here's where the inheritance occurs
+UIBaseModel.prototype = Object.create(xassist.EventDispatcher.prototype); // Here's where the inheritance occurs
 UIBaseModel.prototype.constructor = UIBaseModel;
 UIBaseModel.prototype.init=function(config,state,content){
 	this.setConfiguration(config);
@@ -40,7 +40,7 @@ UIBaseModel.prototype.registerEvents=function(){
 	}
 };
 UIBaseModel.prototype.setConfiguration=function(config){
-	object(this.config).mergeUnique(config);
+	xassist.object(this.config).mergeUnique(config);
 };
 
 var _setStateContent=function(type){
@@ -54,7 +54,7 @@ var _setStateContent=function(type){
 			//key is an object
 			//no events are fired
 			//is used during init
-			object(this[type]).mergeUnique(key);
+			xassist.object(this[type]).mergeUnique(key);
 			return true;
 		}
 		else if(this[type].hasOwnProperty(key)){
@@ -91,7 +91,7 @@ UIBaseModel.prototype._checkStateContentChanged=function(type,oldValue,newValue,
 	return false
 };
 
-function UIBaseView(baseClass,containerElm,config){
+function UIBaseView(baseClass,containerElm){
 	this.initialized=false;
 	this.containerElm=containerElm;
 	this.baseClass=baseClass||false;
@@ -100,7 +100,7 @@ function UIBaseView(baseClass,containerElm,config){
 
 UIBaseView.prototype.init=function(config,content){
 	//overrides parentClass init-method
-	this.element=this.createElement(config);
+	this.element=this.createElement(config,content);
 	this.initialized=true;
 };
 
@@ -112,15 +112,14 @@ UIBaseView.prototype.createElement=function(config,content){
 	return elm;
 };
 
-UIBaseView.prototype.getContent=function(content){
+UIBaseView.prototype.getContent=function(/*content,config*/){
 	return "";
 };
-UIBaseView.prototype.getClassName=function(config){
+UIBaseView.prototype.getClassName=function(/*config*/){
 	return this.className||"";
 };
 
 UIBaseView.prototype.render=function(state){
-	console.log("RENDERING View");
 	if(state){
 		this.setState(state);
 	}
@@ -130,17 +129,15 @@ UIBaseView.prototype.render=function(state){
 	}
 	return false;
 };
-UIBaseView.prototype.setState=function(state){
+UIBaseView.prototype.setState=function(/*state*/){
 	/*this.disable(state.disabled);
 	this.select(state.selected);
 	this.show(state.visible);*/
 		
 };
 
-var { id: id$1, EventDispatcher: EventDispatcher$1, object: object$1 }=require("xassist");
-
 function UIBaseController(model,view){
-	EventDispatcher$1.call(this);
+	xassist.EventDispatcher.call(this);
 	this.initialized=false;
 	this.model=model;
 	
@@ -149,7 +146,7 @@ function UIBaseController(model,view){
 	//this.onEvent=new Event(this);
 	this.init();
 }
-UIBaseController.prototype = Object.create(EventDispatcher$1.prototype); // Here's where the inheritance occurs
+UIBaseController.prototype = Object.create(xassist.EventDispatcher.prototype); // Here's where the inheritance occurs
 UIBaseController.prototype.constructor = UIBaseController;
 
 
@@ -170,15 +167,15 @@ UIBaseController.prototype.render=function(){
 	this.view.render(this.model.getState());
 };
 UIBaseController.prototype.addListeners=function(){
-	this.model.on("stateChanged",function(state){
+	/*this.model.on("stateChanged",function(state){
 		this.fire("event",state);
 		console.log('stateChanged');
-		console.log(arguments);
+		console.log(arguments)
 	});
 	this.model.on("contentChanged",function(){
 		console.log("contentChanged");
-		console.log(arguments);
-	});
+		console.log(arguments)
+	});*/
 };
 
 exports.BaseModel = UIBaseModel;
