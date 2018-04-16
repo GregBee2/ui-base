@@ -1,8 +1,8 @@
 /**
 * @preserve
-* https://github.com/GregBee2/ui-base.git Version 0.0.2.
+* https://github.com/GregBee2/ui-base.git Version 0.0.3.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Mon, 16 Apr 2018 13:09:27 GMT.
+*  Created on Mon, 16 Apr 2018 13:33:07 GMT.
 */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
@@ -30,6 +30,7 @@ UIBaseModel.prototype.init=function(config,state,content){
 	this.setContent(content);
 	this.registerEvents();
 	this.initialized=true;
+	return this;
 };
 UIBaseModel.prototype.registerEvents=function(){
 	if(this.state){
