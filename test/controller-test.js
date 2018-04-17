@@ -27,7 +27,7 @@ tape("BaseController: creates new instance", function(test){
 	var c=new xv.BaseController(m,v)
 	test.ok(c.constructor.name=== "UIBaseController",
 		"BaseController sets correct class name for instance (UIBaseController)")
-	test.ok(c.view.initialized,
+	test.ok(c.view.initialized===false && (c.init(),c.view.initialized),
 		"BaseController initializes view and model if needed")
 	test.end()
 })

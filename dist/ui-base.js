@@ -2,7 +2,7 @@
 * @preserve
 * https://github.com/GregBee2/ui-base.git Version 0.0.4.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Tue, 17 Apr 2018 10:04:34 GMT.
+*  Created on Tue, 17 Apr 2018 10:22:19 GMT.
 */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
@@ -145,7 +145,7 @@ function UIBaseController(model,view){
 	this.view=view;
 	
 	//this.onEvent=new Event(this);
-	this.init();
+	//this.init();
 }
 UIBaseController.prototype = Object.create(xassist.EventDispatcher.prototype); // Here's where the inheritance occurs
 UIBaseController.prototype.constructor = UIBaseController;
