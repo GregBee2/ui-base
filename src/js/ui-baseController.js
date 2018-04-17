@@ -8,7 +8,7 @@ function UIBaseController(model,view){
 	this.view=view
 	
 	//this.onEvent=new Event(this);
-	this.init();
+	//this.init();
 }
 UIBaseController.prototype = Object.create(EventDispatcher.prototype); // Here's where the inheritance occurs
 UIBaseController.prototype.constructor = UIBaseController;
