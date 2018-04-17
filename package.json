@@ -33,7 +33,7 @@
     "tape": "^4.9.0"
   },
   "dependencies": {
-    "xassist": "^1.0.3"
+    "xassist": "^1.1.2"
   },
   "repository": {
     "type": "git",
