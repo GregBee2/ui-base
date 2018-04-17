@@ -14,14 +14,14 @@ UIBaseController.prototype = Object.create(EventDispatcher.prototype); // Here's
 UIBaseController.prototype.constructor = UIBaseController;
 
 
-UIBaseController.prototype.init=function(){
+UIBaseController.prototype.init=function(config,state,content){
 	//this.model.init(config,state,content);
 	//this.addChildren(options,data);
 	//this.attachChildEvents();
 	
 	//this.setViewContent();
 	if(!this.model.initialized){
-		this.model.init();
+		this.model.init(config,state,content);
 	}
 	if(!this.view.initialized){
 		this.view.init(this.model.getConfiguration(),this.model.getContent);
