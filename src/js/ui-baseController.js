@@ -24,7 +24,7 @@ UIBaseController.prototype.init=function(config,state,content){
 		this.model.init(config,state,content);
 	}
 	if(!this.view.initialized){
-		this.view.init(this.model.getConfiguration(),this.model.getContent);
+		this.view.init(this.model.getConfiguration(),this.model.getContent());
 	}
 	this.addListeners();
 	this.registerEvents();
