@@ -1,8 +1,8 @@
 /**
 * @preserve
-* https://github.com/GregBee2/ui-base.git Version 0.0.6.
+* https://github.com/GregBee2/ui-base.git Version 0.0.7.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Tue, 17 Apr 2018 13:12:21 GMT.
+*  Created on Tue, 17 Apr 2018 13:12:42 GMT.
 */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
