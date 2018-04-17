@@ -1,13 +1,13 @@
 /**
 * @preserve
-* https://github.com/GregBee2/ui-base.git Version 0.0.3.
+* https://github.com/GregBee2/ui-base.git Version 0.0.4.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Mon, 16 Apr 2018 13:33:07 GMT.
+*  Created on Tue, 17 Apr 2018 10:04:34 GMT.
 */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'xassist'], factory) :
-	(factory((global.xv = global.xv || {}),global.xv));
+	(factory((global.xv = global.xv || {}),global.xa));
 }(this, (function (exports,xassist) { 'use strict';
 
 function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
@@ -151,14 +151,14 @@ UIBaseController.prototype = Object.create(xassist.EventDispatcher.prototype); /
 UIBaseController.prototype.constructor = UIBaseController;
 
 
-UIBaseController.prototype.init=function(){
+UIBaseController.prototype.init=function(config,state,content){
 	//this.model.init(config,state,content);
 	//this.addChildren(options,data);
 	//this.attachChildEvents();
 	
 	//this.setViewContent();
 	if(!this.model.initialized){
-		this.model.init();
+		this.model.init(config,state,content);
 	}
 	if(!this.view.initialized){
 		this.view.init(this.model.getConfiguration(),this.model.getContent);
