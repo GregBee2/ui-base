@@ -4,14 +4,14 @@ import { id, EventDispatcher, object } from "xassist"
 
 function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
 	EventDispatcher.call(this);
-	this.config=defaultConfig||{};
+	this.config=object(defaultConfig).clone()||{};
 	if(this.config){
 		this.config.id=(typeof idPrefix==="string"?id(idPrefix):id())
 	}
 
-	this.state=defaultState||false;
+	this.state=object(defaultState).clone()||false;
 
-	this.content=defaultContent||false
+	this.content=object(defaultContent).clone()||false
 	this.initialized=false
 }
 UIBaseModel.prototype = Object.create(EventDispatcher.prototype); // Here's where the inheritance occurs

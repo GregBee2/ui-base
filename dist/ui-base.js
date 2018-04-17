@@ -2,7 +2,7 @@
 * @preserve
 * https://github.com/GregBee2/ui-base.git Version 0.0.6.
 *  Copyright 2018 Gregory Beirens.
-*  Created on Tue, 17 Apr 2018 11:50:21 GMT.
+*  Created on Tue, 17 Apr 2018 13:12:21 GMT.
 */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('xassist')) :
@@ -12,14 +12,14 @@
 
 function UIBaseModel(defaultConfig,defaultState,defaultContent,idPrefix){
 	xassist.EventDispatcher.call(this);
-	this.config=defaultConfig||{};
+	this.config=xassist.object(defaultConfig).clone()||{};
 	if(this.config){
 		this.config.id=(typeof idPrefix==="string"?xassist.id(idPrefix):xassist.id());
 	}
 
-	this.state=defaultState||false;
+	this.state=xassist.object(defaultState).clone()||false;
 
-	this.content=defaultContent||false;
+	this.content=xassist.object(defaultContent).clone()||false;
 	this.initialized=false;
 }
 UIBaseModel.prototype = Object.create(xassist.EventDispatcher.prototype); // Here's where the inheritance occurs
